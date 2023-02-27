@@ -3,8 +3,8 @@ package com.example.demo.customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
-import java.util.Objects;
 
 @RequestMapping("api/v2/customers")
 @RestController
@@ -18,7 +18,7 @@ public class CustomerControllerV2 {
 
     @GetMapping
     List<Customer> getCustomers() {
-        return List.of(new Customer(1L, "v2", "v2"));
+        return List.of(new Customer(1L, "v2", "v2", "email@email.com"));
     }
 
     @GetMapping(path = "{customerId}")
@@ -27,7 +27,7 @@ public class CustomerControllerV2 {
     }
 
     @PostMapping
-    void createNewCustomer(@RequestBody Customer customer) {
+    void createNewCustomer(@Valid @RequestBody Customer customer) {
         System.out.println("POST REQUEST... ");
         System.out.println(customer);
     }
