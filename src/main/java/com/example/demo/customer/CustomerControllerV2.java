@@ -19,7 +19,7 @@ public class CustomerControllerV2 {
 
     @GetMapping
     List<Customer> getCustomers() {
-        return List.of(new Customer(1L, "v2", "v2", "email@email.com"));
+        return customerService.getCustomers();
     }
 
     @GetMapping(path = "{customerId}")
